@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.u1tramarinet.morphologicalanalysisapp.ui.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_24dp"
+        tools:context=".ui.main.MainFragment">
+
+        <TextView
+            android:id="@+id/progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_12dp"
+            android:textAlignment="center"
+            android:text="@{viewModel.progress}"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/output_generate_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/output_analyze"
+            android:padding="@dimen/padding_12dp"
+            android:text="@string/output_generate"
+            app:layout_constraintTop_toBottomOf="@id/progress" />
+
+        <TextView
+            android:id="@+id/output_generate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.outputGenerate}"
+            app:layout_constraintTop_toBottomOf="@id/output_generate_title" />
+
+        <ImageView
+            android:id="@+id/arrow01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_6dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_arrow_upward_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/output_generate" />
+
+        <TextView
+            android:id="@+id/output_analyze_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/output_analyze"
+            android:padding="@dimen/padding_12dp"
+            android:text="@string/output_analyze"
+            app:layout_constraintTop_toBottomOf="@id/arrow01" />
+
+        <TextView
+            android:id="@+id/output_analyze"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical"
+            android:text="@{viewModel.outputAnalyze}"
+            app:layout_constraintTop_toBottomOf="@id/output_analyze_title" />
+
+        <ImageView
+            android:id="@+id/arrow02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_6dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_baseline_arrow_upward_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/output_analyze" />
+
+        <TextView
+            android:id="@+id/input_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:labelFor="@id/input"
+            android:padding="@dimen/padding_12dp"
+            android:text="@string/input"
+            app:layout_constraintBottom_toTopOf="@id/input" />
+
+        <EditText
+            android:id="@+id/input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"
+            android:maxLines="3"
+            android:text="@={viewModel.observable.input}"
+            app:layout_constraintBottom_toTopOf="@id/analyze_button_from_input" />
+
+        <Button
+            android:id="@+id/analyze_button_from_input"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_6dp"
+            android:layout_marginEnd="@dimen/margin_6dp"
+            android:onClick="@{() -> viewModel.onClickExecuteButtonFromInput()}"
+            android:text="@string/analyze_generate_from_input"
+            app:layout_constraintBottom_toTopOf="@id/clear_button"
+            app:layout_constraintEnd_toStartOf="@id/analyze_button_from_twitter"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/analyze_button_from_twitter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_6dp"
+            android:onClick="@{() -> viewModel.onClickExecuteButtonFromTwitter()}"
+            android:text="@string/analyze_generate_from_twitter"
+            app:layout_constraintBottom_toTopOf="@id/share_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/analyze_button_from_input" />
+
+        <Button
+            android:id="@+id/clear_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_6dp"
+            android:layout_marginEnd="@dimen/margin_6dp"
+            android:onClick="@{() -> viewModel.onClickClearButton()}"
+            android:text="@string/clear"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/share_button"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/share_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_6dp"
+            android:onClick="@{() -> viewModel.onClickShareButton()}"
+            android:text="@string/share"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/clear_button" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

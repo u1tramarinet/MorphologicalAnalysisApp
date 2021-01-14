@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MorphologicalAnalysisApp</string>
+    <string name="input">入力</string>
+    <string name="output">出力</string>
+    <string name="output_analyze">出力（分析）</string>
+    <string name="output_generate">出力（生成）</string>
+    <string name="analyze_generate">分析・生成</string>
+    <string name="analyze_generate_from_input">入力から</string>
+    <string name="analyze_generate_from_twitter">Twitterから</string>
+    <string name="clear">消去</string>
+    <string name="share">共有</string>
+</resources>
